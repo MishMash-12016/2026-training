@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.PrismSubsystem;
 
 public class CheackticksCommandGroup {
 
-    public static Command Runmotor() {
+    public static Command RunmotorCommand() {
         return new SequentialCommandGroup(
                 Movemotorsubsystem.getInstance().setPowerInstantCommand(1),
                 new WaitCommand(3000),

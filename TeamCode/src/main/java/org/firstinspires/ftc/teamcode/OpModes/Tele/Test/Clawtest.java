@@ -6,7 +6,6 @@ import com.acmerobotics.dashboard.config.Config;
 import com.seattlesolvers.solverslib.gamepad.GamepadKeys;
 
 
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.MMDrivetrain;
 import org.firstinspires.ftc.teamcode.Libraries.MMLib.MMOpMode;
 import org.firstinspires.ftc.teamcode.Libraries.MMLib.Utils.OpModeVariables.AllianceColor;
 import org.firstinspires.ftc.teamcode.Libraries.MMLib.Utils.OpModeVariables.OpModeType;
@@ -26,11 +25,11 @@ public class Clawtest extends MMOpMode {
         
 
         MMRobot.getInstance().gamepadEx1.getGamepadButton(GamepadKeys.Button.A).whenPressed(
-                Clawsubsystem.getInstance().Clawopen()
+                Clawsubsystem.getInstance().clawOpenCommand()
         );
 
         MMRobot.getInstance().gamepadEx1.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(
-                Clawsubsystem.getInstance().Clawclose()
+                Clawsubsystem.getInstance().clawCloseCommand()
         );
 
     }

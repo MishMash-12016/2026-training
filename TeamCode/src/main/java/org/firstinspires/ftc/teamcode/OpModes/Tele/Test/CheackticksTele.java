@@ -21,7 +21,7 @@ public class CheackticksTele extends MMOpMode {
     @Override
     public void onInit() {
         MMRobot.getInstance().gamepadEx1.getGamepadButton(GamepadKeys.Button.A).whenPressed(
-                CheackticksCommandGroup.Runmotor()
+                CheackticksCommandGroup.RunmotorCommand()
         );
     }
 

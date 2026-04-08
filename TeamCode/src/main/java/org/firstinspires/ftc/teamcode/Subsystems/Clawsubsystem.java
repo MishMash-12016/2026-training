@@ -38,11 +38,13 @@ public class Clawsubsystem extends ServoSubsystem {
         withServo(MMRobot.getInstance().expansionHub, 1, Direction.FORWARD, 0);
     }
 
-    public Command Clawopen(){
+    public Command clawOpenCommand(){
+
         return setPositionCommand(open);
     }
 
-    public Command Clawclose(){
+    public Command clawCloseCommand(){
+
         return setPositionCommand(close);
     }
 
