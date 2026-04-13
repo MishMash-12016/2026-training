@@ -1,63 +1,17 @@
 package org.firstinspires.ftc.teamcode.OpModes.Auto;
 
-import com.pedropathing.follower.Follower;
-import com.pedropathing.geometry.BezierLine;
-import com.pedropathing.geometry.Pose;
-import com.pedropathing.paths.PathChain;
-import com.seattlesolvers.solverslib.command.RunCommand;
-import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
-import org.firstinspires.ftc.teamcode.CommandGroups.ShootCommandGroup;
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.MMDrivetrain;
 import org.firstinspires.ftc.teamcode.Libraries.MMLib.MMOpMode;
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.Subsystems.MMWebcamSubsystem;
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.Utils.OpModeVariables.AllianceColor;
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.Utils.OpModeVariables.OpModeType;
-import org.firstinspires.ftc.teamcode.Libraries.pedroPathing.FollowPathCommand;
-import org.firstinspires.ftc.teamcode.RobotConstants;
 
 //@Autonomous
 public class MainBasicAuto extends MMOpMode {
 
-    private PathChain FROM_START_TO_SCORE, FROM_SCORE_TO_PARKING;
-
-    private final Pose startPose = new Pose(104.000, 136.000,Math.toRadians(-90));
-    private final Pose scorePose = new Pose(105.000, 105.000,Math.toRadians(50));
-    private final Pose parkingPose = new Pose(90.000, 55.000,Math.toRadians(90));
-
-    public void buildPaths() {
-        FROM_START_TO_SCORE = follower.pathBuilder()
-                .addPath(new BezierLine(startPose,scorePose))
-                .setLinearHeadingInterpolation(Math.toRadians(90), Math.toRadians(135))
-                .build();
-        FROM_SCORE_TO_PARKING = follower.pathBuilder()
-                .addPath(new BezierLine(scorePose,parkingPose))
-                .setTangentHeadingInterpolation().build();
-    }
-    Follower follower;
-
-
-    public MainBasicAuto() {
-        super(OpModeType.NonCompetition.DEBUG, AllianceColor.BLUE);
-    }
-
     @Override
     public void onInit() {
-        MMDrivetrain.update();
-        follower.setStartingPose(startPose);
-        buildPaths();
 
-        SequentialCommandGroup autonomousSequence = new SequentialCommandGroup(
-                new FollowPathCommand(follower, FROM_START_TO_SCORE),
-                ShootCommandGroup.smartUpShoot(),
-                new FollowPathCommand(follower, FROM_SCORE_TO_PARKING),
-                new RunCommand(()-> RobotConstants.APRIL_TAG_ID = MMWebcamSubsystem.getInstance().getAprilTagID()).withTimeout(2000)
-        );
-        autonomousSequence.schedule();
     }
 
     @Override
     public void onPlayLoop() {
-        telemetry.addData("appriltagID",RobotConstants.APRIL_TAG_ID);
-    }
 
+    }
 }

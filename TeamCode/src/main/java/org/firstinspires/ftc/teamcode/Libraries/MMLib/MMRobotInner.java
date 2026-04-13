@@ -14,8 +14,10 @@ public class MMRobotInner extends Robot {
   public MMOpMode currentOpMode;
   public CuttleRevHub controlHub;
   public CuttleRevHub expansionHub;
+  public CuttleRevHub servoHub;
   public String controlHubName = "Control Hub";
   public String expansionHubName = "Expansion Hub";
+  public String servoHubName = "Servo Hub";
 
   public GamepadEx gamepadEx1;
   public GamepadEx gamepadEx2;
@@ -60,6 +62,10 @@ public class MMRobotInner extends Robot {
 
   public void setExpansionHubName(String expansionHubName) {
     this.expansionHubName = expansionHubName;
+  }
+
+  public void setServoHubName(String servoHubName) {
+    this.servoHubName = servoHubName;
   }
 
   public void initAuto() {}
