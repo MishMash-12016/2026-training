@@ -1,51 +1,51 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
-import static org.firstinspires.ftc.teamcode.Libraries.MMLib.Subsystems.MMWebcamSubsystem.instance;
-
 import com.acmerobotics.dashboard.config.Config;
 import com.seattlesolvers.solverslib.command.Command;
-import com.seattlesolvers.solverslib.command.InstantCommand;
 
 import org.firstinspires.ftc.teamcode.Libraries.CuttlefishFTCBridge.src.utils.Direction;
 import org.firstinspires.ftc.teamcode.Libraries.MMLib.Subsystems.Servo.ServoSubsystem;
-import org.firstinspires.ftc.teamcode.Libraries.MMLib.Utils.OpModeVariables.OpModeType;
 import org.firstinspires.ftc.teamcode.MMRobot;
 
 import Ori.Coval.Logging.AutoLog;
 
 @Config
 @AutoLog
-public class Clawsubsystem extends ServoSubsystem {
+public class ClawSubsystem extends ServoSubsystem {
 
     public static double open = 0.95;
     public static double close = 0.00;
 
-    public static Clawsubsystem instance;
+    public static ClawSubsystem instance;
 
-    public static synchronized Clawsubsystem getInstance() {
+    public static synchronized ClawSubsystem getInstance() {
         if (instance == null) {
-                instance = new ClawsubsystemAutoLogged("Clawsubsystem");
-            }
+            instance = new ClawsubsystemAutoLogged("Clawsubsystem");
+        }
 
         return instance;
     }
 
-    public Clawsubsystem(String subsystemName) {
+    public ClawSubsystem(String subsystemName) {
         super(subsystemName);
-        MMRobot mmRobot = MMRobot.getInstance();
 
-        ///port 0
+        //Port 1
         withServo(MMRobot.getInstance().expansionHub, 1, Direction.FORWARD, 0);
     }
 
-    public Command clawOpenCommand(){
+    public Command clawOpenCommand() {
 
         return setPositionCommand(open);
     }
 
-    public Command clawCloseCommand(){
+    public Command clawCloseCommand() {
 
         return setPositionCommand(close);
+    }
+
+    @Override
+    public void reset() {
+        instance = null;
     }
 
 }
