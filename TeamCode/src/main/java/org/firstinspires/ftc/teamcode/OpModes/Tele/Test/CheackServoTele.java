@@ -14,10 +14,9 @@ import org.firstinspires.ftc.teamcode.Subsystems.MoveMotorSubsystem;
 
 @AutoLog
 @Config
-public class CheckTicksTele extends MMOpMode {
+public class CheackServoTele extends MMOpMode {
 
-    public CheckTicksTele() {
-        super(OpModeType.NonCompetition.DEBUG, AllianceColor.RED);
+    public CheackServoTele() {super(OpModeType.NonCompetition.DEBUG, AllianceColor.RED);
     }
 
     @Override
